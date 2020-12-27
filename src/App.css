@@ -1,0 +1,46 @@
+:root {
+  --text-light: #fdfdfd;
+  --text-bright: #fff;
+  --primary-text: #48f;
+  --danger-text: #f44;
+  --primary-bg-1: #48f;
+  --primary-bg-2: #26d;
+  --secondary-bg-1: #fdfdfd;
+  --secondary-bg-2: #fff;
+
+  --transistion: all linear 100ms;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  width: 100%;
+  min-height: 100vh;
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+  color: var(--text-light);
+}
+
+li {
+  list-style: none;
+}
+
+button {
+  border: none;
+  padding: 1em;
+  transition: var(--transistion);
+  background-color: var(--secondary-bg-1);
+  color: var(--primary-text);
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+}
