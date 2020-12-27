@@ -6,6 +6,7 @@
   align-items: center;
   padding: 1em;
   background-color: var(--primary-bg-1);
+  z-index: 999;
 }
 
 .navbarLinks {
@@ -17,8 +18,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-items: flex-end;
+  padding-top: 1em;
+  padding-bottom: 1em;
   background-color: var(--primary-bg-2);
   transition: var(--transistion);
+  z-index: 998;
 }
 
 .open {
@@ -40,10 +45,39 @@
 
   display: block;
 }
-.navbarLink:hover {
+.navbarLink a:hover {
   background-color: var(--primary-bg-1);
+  color: var(--focus-text);
+
   transition: var(--transistion);
 }
+
+.activeLink a {
+  color: var(--focus-text);
+}
+
 .navbarBtn {
   font-size: 0.25rem;
+}
+
+@media screen and (min-width: 600px) {
+  .navbarBtn {
+    display: none;
+    pointer-events: none;
+  }
+
+  .navbarLinks {
+    position: static;
+    flex-direction: row;
+    flex: 1;
+    margin-left: 1em;
+    background-color: transparent;
+    padding-top: 0;
+    padding-bottom: 0;
+    opacity: 1;
+  }
+  .navbarLinks a {
+    width: auto;
+    height: auto;
+  }
 }
