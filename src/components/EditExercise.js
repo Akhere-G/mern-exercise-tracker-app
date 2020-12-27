@@ -1,7 +1,7 @@
 import React from "react";
 
 const EditExercise = () => {
-  return <div></div>;
+  return <div>EditExercise</div>;
 };
 
 export default EditExercise;
