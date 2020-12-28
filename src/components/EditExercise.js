@@ -11,6 +11,8 @@ const EditExercise = () => {
   const [users, setUsers] = useState([]);
   const { id } = useParams();
 
+  const url = process.env.REACT_APP_URL;
+
   const onChangeUsername = e => {
     setUsername(e.target.value);
   };
@@ -29,7 +31,7 @@ const EditExercise = () => {
     const exercise = { username, description, duration, date, users };
 
     axios
-      .post("http://localhost:5000/exercises/update/" + id, exercise)
+      .post(`${url}/exercises/update/` + id, exercise)
       .then(res => console.log(res.data))
       .catch(err => console.log(err));
     window.location = "/";
@@ -37,7 +39,7 @@ const EditExercise = () => {
 
   useEffect(() => {
     axios
-      .post("http://localhost:5000/exercises/" + id)
+      .post(`${url}/exercises/` + id)
       .then(res => {
         setUsername(res.data.username);
         setDescription(res.data.Description);
@@ -46,13 +48,13 @@ const EditExercise = () => {
       })
       .catch(err => console.log(err));
 
-    axios.get("http://localhost:5000/users/").then(response => {
+    axios.get(`${url}/users/`).then(response => {
       if (response.data && response.data.length > 0) {
         setUsers(response.data.map(user => user.username));
         setUsername(response.data[0].username);
       }
     });
-  }, []);
+  }, [id]);
 
   return (
     <div>

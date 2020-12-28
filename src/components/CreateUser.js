@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 
 const CreateUser = () => {
   const [username, setUsername] = useState("");
+  const url = process.env.REACT_APP_URL;
 
   const onChangeUsername = e => {
     setUsername(e.target.value);
@@ -13,7 +14,7 @@ const CreateUser = () => {
     const user = { username };
 
     axios
-      .post("http://localhost:5000/users/add", user)
+      .post(`${user}/users/add`, user)
       .then(res => console.log(res.data))
       .catch(e => console.log(e));
     window.location = "/";

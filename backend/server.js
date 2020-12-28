@@ -27,6 +27,10 @@ const usersRouter = require("./routes/users");
 app.use("/exercises", exercisesRouter);
 app.use("/users", usersRouter);
 
+app.get("/", (req, res) => {
+  res.send("Welcome to the Excercise Tracker API");
+  res.end();
+});
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => {

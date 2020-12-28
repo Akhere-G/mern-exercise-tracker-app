@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import Exercise from "./Exercise";
 import styles from "./ExerciseList.module.css";
@@ -8,9 +7,11 @@ const ExerciseList = () => {
   const [exercises, setExercises] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const url = process.env.REACT_APP_URL;
+
   const deleteExercise = id => {
     axios
-      .delete("http://localhost:5000/exercises/" + id)
+      .delete(`${url}/exercises/` + id)
       .then(res => {
         console.log(res);
         setExercises(prev => prev.filter(ExerciseId => ExerciseId._id !== id));
@@ -21,7 +22,7 @@ const ExerciseList = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get("http://localhost:5000/exercises/")
+      .get(`${url}/exercises/`)
       .then(response => {
         setExercises(response.data);
       })

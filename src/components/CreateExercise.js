@@ -3,7 +3,9 @@ import styles from "./CreateExercise.module.css";
 import axios from "axios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+
 const CreateExercise = () => {
+  const url = process.env.REACT_APP_URL;
   const [username, setUsername] = useState("");
   const [description, setDescription] = useState("");
   const [duration, setDuration] = useState(0);
@@ -28,14 +30,14 @@ const CreateExercise = () => {
     const exercise = { username, description, duration, date, users };
 
     axios
-      .post("http://localhost:5000/exercises/add", exercise)
+      .post(`${url}/add`, exercise)
       .then(res => console.log(res.data))
       .catch(err => console.log(err));
     window.location = "/";
   };
 
   useEffect(() => {
-    axios.get("http://localhost:5000/users/").then(response => {
+    axios.get(`${url}/users/`).then(response => {
       if (response.data && response.data.length > 0) {
         setUsers(response.data.map(user => user.username));
         setUsername(response.data[0].username);
