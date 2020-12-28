@@ -1,0 +1,30 @@
+.exercise button {
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.editBtn {
+  padding: 0;
+  margin-bottom: 1em;
+}
+
+.editBtn a:hover {
+  transform: skew(-10deg);
+  transition: var(--transistion);
+}
+
+.editBtn a {
+  color: var(--primary-text);
+  transition: var(--transistion);
+}
+
+.deleteBtn {
+  color: var(--danger-text);
+  padding: 0;
+  transition: var(--transistion);
+}
+
+.deleteBtn:hover {
+  transform: skew(-10deg);
+  transition: var(--transistion);
+}

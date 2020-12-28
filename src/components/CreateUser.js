@@ -23,24 +23,21 @@ const CreateUser = () => {
     <div>
       <h3>Create New User</h3>
       <form onSubmit={onSubmit}>
-        <div className='form-group'>
+        <div>
           <label>Username: </label>
           <input
             type='text'
             required
-            className='form-control'
             value={username}
             placeholder='Enter new username'
             onChange={onChangeUsername}
           />
         </div>
 
-        <div className='form-group'>
-          <input
-            type='submit'
-            className='btn btn-primary w-100'
-            value='Create Exercise Log'
-          />
+        <div>
+          <button type='submit' className='btn'>
+            Create Exercise Log
+          </button>
         </div>
       </form>
     </div>

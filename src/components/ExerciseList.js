@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Exercise from "./Exercise";
+import styles from "./ExerciseList.module.css";
+
 const ExerciseList = () => {
   const [exercises, setExercises] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -46,13 +48,13 @@ const ExerciseList = () => {
   }
 
   return (
-    <div>
-      <h3 className='mb-4'>Logged Exercises</h3>
-      <table className='table mb-4'>
-        <thead className='thead-light'>
+    <>
+      <h3 className={styles.title}>Logged Exercises</h3>
+      <table className={styles.table}>
+        <thead>
           <tr>
             <th>username</th>
-            <th>description</th>
+            <th>desc</th>
             <th>duration</th>
             <th>date</th>
             <th>options</th>
@@ -72,7 +74,7 @@ const ExerciseList = () => {
           })}
         </tbody>
       </table>
-    </div>
+    </>
   );
 };
 

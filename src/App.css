@@ -9,6 +9,7 @@
   --secondary-bg-1: #fdfdfd;
   --secondary-bg-2: #fff;
 
+  --max-width: 800px;
   --transistion: all linear 100ms;
 }
 
@@ -24,8 +25,31 @@ body {
   width: 100%;
   min-height: 100vh;
   scroll-behavior: smooth;
+  font-weight: 400;
 }
 
+main {
+  width: 100%;
+  padding: 1em;
+  max-width: var(--max-width);
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+main > h3 {
+  margin-bottom: 1em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+th {
+  font-weight: 400;
+}
 a {
   text-decoration: none;
   color: var(--text-light);
@@ -39,9 +63,39 @@ button {
   border: none;
   padding: 1em;
   transition: var(--transistion);
-  background-color: var(--secondary-bg-1);
-  color: var(--primary-text);
   border-radius: 999px;
   display: flex;
   align-items: center;
+}
+
+table {
+  width: 100%;
+  overflow-x: scroll;
+  font-size: 0.8rem;
+}
+
+input,
+select {
+  border-radius: 999px;
+  border: none;
+  background: #efefef;
+  padding: 0.5em;
+  margin: 1em auto;
+  display: inline;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+}
+
+.btn {
+  color: var(--secondary-bg-1);
+  background-color: var(--primary-bg-1);
+  transition: var(--transistion);
+}
+
+.btn:hover {
+  color: var(--focus-text);
+  cursor: pointer;
+  transition: var(--transistion);
+  background-color: #6af;
 }

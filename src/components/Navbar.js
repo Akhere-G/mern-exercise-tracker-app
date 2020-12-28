@@ -13,40 +13,42 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className={styles.navbar}>
-      <h1>
-        <Link to='/' className={styles.logo}>
-          Exercise Tracker
-        </Link>
-      </h1>
+    <header className={styles.container}>
+      <nav className={styles.navbar}>
+        <h1>
+          <Link to='/' className={styles.logo}>
+            Exercise Tracker
+          </Link>
+        </h1>
 
-      <ul className={`${styles.navbarLinks} ${open ? styles.open : ""}`}>
-        {links.map((link, index) => {
-          const { name, slug } = link;
-          const activeClass = pathname === slug ? styles.activeLink : "";
-          return (
-            <li className={`${styles.navbarLink} ${activeClass}`}>
-              <Link
-                to={slug}
-                onClick={() => {
-                  setOpen(prev => !prev);
-                }}
-              >
-                {name}
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
-      <button
-        className={styles.navbarBtn}
-        onClick={() => {
-          setOpen(prev => !prev);
-        }}
-      >
-        <Menu />
-      </button>
-    </nav>
+        <ul className={`${styles.navbarLinks} ${open ? styles.open : ""}`}>
+          {links.map((link, index) => {
+            const { name, slug } = link;
+            const activeClass = pathname === slug ? styles.activeLink : "";
+            return (
+              <li className={`${styles.navbarLink} ${activeClass}`}>
+                <Link
+                  to={slug}
+                  onClick={() => {
+                    setOpen(prev => !prev);
+                  }}
+                >
+                  {name}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+        <button
+          className={styles.navbarBtn}
+          onClick={() => {
+            setOpen(prev => !prev);
+          }}
+        >
+          <Menu />
+        </button>
+      </nav>
+    </header>
   );
 };
 

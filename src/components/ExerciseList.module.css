@@ -1,0 +1,17 @@
+.title {
+  margin-bottom: 1em;
+}
+
+.table th {
+  background: var(--primary-bg-1);
+  padding: 0.2em;
+  text-align: left;
+}
+
+.table td {
+  padding: 0.3em;
+}
+
+.table > tbody > tr:nth-of-type(2n) {
+  background: #ddd;
+}

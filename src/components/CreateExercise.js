@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import styles from "./CreateExercise.module.css";
 import axios from "axios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -43,16 +44,17 @@ const CreateExercise = () => {
   }, []);
 
   return (
-    <div>
+    <>
       <h3>Create New Exercise Log</h3>
       <form onSubmit={onSubmit}>
-        <div className='form-group'>
-          <label htmlFor=''>Username: </label>
+        <div className={styles.formGroup}>
+          <label htmlFor='usernameInput'>Username: </label>
           <select
             required
-            className='form-control'
             value={username}
             onChange={onChangeUsername}
+            className={styles.input}
+            id='usernameInput'
           >
             {users.map(user => {
               return (
@@ -63,42 +65,44 @@ const CreateExercise = () => {
             })}
           </select>
         </div>
-        <div className='form-group'>
-          <label>Description: </label>
+        <div className={styles.formGroup}>
+          <label htmlFor='descInput'>Description: </label>
           <input
             type='text'
             required
-            className='form-control'
             value={description}
             onChange={onChangeDescription}
+            id='descInput'
           />
         </div>
-        <div className='form-group'>
-          <label>Duration: </label>
+        <div className={styles.formGroup}>
+          <label htmlFor='durationInput'>Duration: </label>
           <input
             type='text'
             required
-            className='form-control'
             value={duration}
             onChange={onChangeDuration}
+            id='durationInput'
           />
         </div>
-        <div className='form-group'>
-          <label>Date: </label>
-          <div>
-            <DatePicker selected={date} onChange={onChangeDate} />
+        <div className={styles.formGroup}>
+          <label htmlFor='dateInput'>Date: </label>
+          <div className={`${styles.dateInput} ${styles.input}`}>
+            <DatePicker
+              selected={date}
+              onChange={onChangeDate}
+              id='dateInput'
+            />
           </div>
         </div>
 
-        <div className='form-group'>
-          <input
-            type='submit'
-            className='btn btn-primary w-100'
-            value='Create Exercise Log'
-          />
+        <div className={styles.formBtnGroup}>
+          <button className='btn' type='submit'>
+            Create Exercise Log
+          </button>
         </div>
       </form>
-    </div>
+    </>
   );
 };
 

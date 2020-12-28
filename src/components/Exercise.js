@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import styles from "./Exercise.module.css";
+
 const Exercise = ({
   id,
   deleteExercise,
@@ -10,13 +12,13 @@ const Exercise = ({
 }) => {
   const regexp = /-/g;
   return (
-    <tr className='bg-dark text-light'>
+    <tr className={styles.exercise}>
       <td> {username} </td>
       <td> {description} </td>
       <td> {duration} </td>
       <td> {date.substring(0, 10).replace(regexp, " ")} </td>
       <td>
-        <button className='btn text-primary'>
+        <button className={styles.editBtn}>
           <Link
             to={`/edit/${id}`}
             onClick={() => {
@@ -26,9 +28,9 @@ const Exercise = ({
             Edit
           </Link>
         </button>
-        |
+
         <button
-          className='btn text-danger'
+          className={styles.deleteBtn}
           onClick={() => {
             deleteExercise(id);
           }}
