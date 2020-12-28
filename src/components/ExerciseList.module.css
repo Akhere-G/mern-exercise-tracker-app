@@ -13,5 +13,9 @@
 }
 
 .table > tbody > tr:nth-of-type(2n) {
-  background: #ddd;
+  background: #cdcdcd;
+}
+
+.table > tbody > tr:nth-of-type(2n + 1) {
+  background: #f2f2f2;
 }
