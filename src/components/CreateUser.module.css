@@ -14,15 +14,7 @@
   flex: 1;
 }
 
-.dateInput input {
-  margin: 0;
-}
-
 .formBtnGroup {
   justify-content: flex-end;
   display: flex;
-}
-
-.formGroup > select {
-  border: none;
 }

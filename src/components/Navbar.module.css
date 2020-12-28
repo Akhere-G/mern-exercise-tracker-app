@@ -64,6 +64,13 @@
   font-size: 0.25rem;
   background-color: var(--secondary-bg-1);
   color: var(--primary-text);
+  cursor: pointer;
+  transition: var(--transistion);
+}
+
+.navbarBtn:hover {
+  transform: rotate(90deg);
+  transition: var(--transistion);
 }
 
 @media screen and (min-width: 600px) {

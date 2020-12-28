@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Exercise.module.css";
 
@@ -10,9 +10,11 @@ const Exercise = ({
   duration,
   date,
 }) => {
+  const [show, setShow] = useState(false);
+
   const regexp = /-/g;
   return (
-    <tr className={styles.exercise}>
+    <tr className={`${styles.exercise} ${show ? styles.deleted : ""} `}>
       <td> {username} </td>
       <td> {description} </td>
       <td> {duration} </td>
@@ -32,7 +34,10 @@ const Exercise = ({
         <button
           className={styles.deleteBtn}
           onClick={() => {
-            deleteExercise(id);
+            setShow(true);
+            setTimeout(() => {
+              deleteExercise(id);
+            }, 350);
           }}
         >
           Delete

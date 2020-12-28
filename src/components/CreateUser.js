@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-
+import styles from "./CreateUser.module.css";
 const CreateUser = () => {
   const [username, setUsername] = useState("");
   const url = process.env.REACT_APP_URL;
@@ -24,7 +24,7 @@ const CreateUser = () => {
     <div>
       <h3>Create New User</h3>
       <form onSubmit={onSubmit}>
-        <div>
+        <div className={styles.formGroup}>
           <label>Username: </label>
           <input
             type='text'
@@ -35,7 +35,7 @@ const CreateUser = () => {
           />
         </div>
 
-        <div>
+        <div className={styles.formBtnGroup}>
           <button type='submit' className='btn'>
             Create Exercise Log
           </button>

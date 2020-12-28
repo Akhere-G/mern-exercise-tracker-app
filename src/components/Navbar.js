@@ -26,7 +26,7 @@ const Navbar = () => {
             const { name, slug } = link;
             const activeClass = pathname === slug ? styles.activeLink : "";
             return (
-              <li className={`${styles.navbarLink} ${activeClass}`}>
+              <li key={index} className={`${styles.navbarLink} ${activeClass}`}>
                 <Link
                   to={slug}
                   onClick={() => {

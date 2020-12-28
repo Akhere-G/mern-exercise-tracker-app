@@ -30,7 +30,7 @@ const CreateExercise = () => {
     const exercise = { username, description, duration, date, users };
 
     axios
-      .post(`${url}/add`, exercise)
+      .post(`${url}/exercises/add/`, exercise)
       .then(res => console.log(res.data))
       .catch(err => console.log(err));
     window.location = "/";
