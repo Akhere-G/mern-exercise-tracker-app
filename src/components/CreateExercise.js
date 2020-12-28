@@ -43,7 +43,7 @@ const CreateExercise = () => {
         setUsername(response.data[0].username);
       }
     });
-  }, []);
+  }, [url]);
 
   return (
     <>

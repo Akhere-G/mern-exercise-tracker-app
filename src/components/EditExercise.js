@@ -54,7 +54,7 @@ const EditExercise = () => {
         setUsername(response.data[0].username);
       }
     });
-  }, [id]);
+  }, [id, url]);
 
   return (
     <div>

@@ -28,7 +28,7 @@ const ExerciseList = () => {
       })
       .catch(err => console.log(err));
     setLoading(false);
-  }, []);
+  }, [url]);
 
   if (!exercises || loading) {
     return (
