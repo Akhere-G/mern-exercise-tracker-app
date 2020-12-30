@@ -118,3 +118,32 @@ select {
   padding: 1em;
   box-shadow: 0.5em 0.5em 0.8em #0008;
 }
+
+.formGroup {
+  display: flex;
+  align-items: baseline;
+  position: relative;
+}
+
+.formGroup > label {
+  min-width: 6em;
+}
+
+.formGroup > input,
+.formGroup > .input {
+  margin: 1em auto 1em 1em;
+  flex: 1;
+}
+
+.dateInput input {
+  margin: 0;
+}
+
+.formBtnGroup {
+  justify-content: flex-end;
+  display: flex;
+}
+
+.formGroup > select {
+  border: none;
+}

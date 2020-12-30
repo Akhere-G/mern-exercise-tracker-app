@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import styles from "./CreateExercise.module.css";
+
 const EditExercise = () => {
   const [loading, setLoading] = useState(false);
   const [exerciseData, setExerciseData] = useState({
@@ -73,16 +75,17 @@ const EditExercise = () => {
   }, [id, url]);
 
   return (
-    <div className='section'>
+    <section className='section'>
       <h2>Edit Exercise Log</h2>
       <form className='form' onSubmit={onSubmit}>
-        <div className='form-group'>
-          <label htmlFor=''>Username: </label>
+        <div className='formGroup'>
+          <label htmlFor='usernameInput'>Username: </label>
           <select
             required
-            className='form-control'
             value={exerciseData.username}
             onChange={onChangeUsername}
+            className='input'
+            id='usernameInput'
           >
             {users.map(user => {
               return (
@@ -93,42 +96,44 @@ const EditExercise = () => {
             })}
           </select>
         </div>
-        <div className='form-group'>
-          <label>Description: </label>
+        <div className='formGroup'>
+          <label htmlFor='descInput'>Description: </label>
           <input
             type='text'
             required
-            className='form-control'
             value={exerciseData.description}
             onChange={onChangeDescription}
+            id='descInput'
           />
         </div>
-        <div className='form-group'>
-          <label>Duration: </label>
+        <div className='formGroup'>
+          <label htmlFor='durationInput'>Duration: </label>
           <input
             type='text'
             required
-            className='form-control'
             value={exerciseData.duration}
             onChange={onChangeDuration}
+            id='durationInput'
           />
         </div>
-        <div className='form-group'>
-          <label>Date: </label>
-          <div>
-            <DatePicker selected={exerciseData.date} onChange={onChangeDate} />
+        <div className='formGroup'>
+          <label htmlFor='dateInput'>Date: </label>
+          <div className='dateInput input'>
+            <DatePicker
+              selected={exerciseData.date}
+              onChange={onChangeDate}
+              id='dateInput'
+            />
           </div>
         </div>
 
-        <div className='form-group'>
-          <input
-            type='submit'
-            className='btn btn-primary w-100'
-            value='Edit Exercise Log'
-          />
+        <div className='formBtnGroup'>
+          <button className='btn' type='submit'>
+            Create Exercise Log
+          </button>
         </div>
       </form>
-    </div>
+    </section>
   );
 };
 

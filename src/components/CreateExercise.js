@@ -49,13 +49,13 @@ const CreateExercise = () => {
     <section className='section'>
       <h2>Create New Exercise Log</h2>
       <form className='form' onSubmit={onSubmit}>
-        <div className={styles.formGroup}>
+        <div className='formGroup'>
           <label htmlFor='usernameInput'>Username: </label>
           <select
             required
             value={username}
             onChange={onChangeUsername}
-            className={styles.input}
+            className='input'
             id='usernameInput'
           >
             {users.map(user => {
@@ -67,7 +67,7 @@ const CreateExercise = () => {
             })}
           </select>
         </div>
-        <div className={styles.formGroup}>
+        <div className='formGroup'>
           <label htmlFor='descInput'>Description: </label>
           <input
             type='text'
@@ -77,7 +77,7 @@ const CreateExercise = () => {
             id='descInput'
           />
         </div>
-        <div className={styles.formGroup}>
+        <div className='formGroup'>
           <label htmlFor='durationInput'>Duration: </label>
           <input
             type='text'
@@ -87,9 +87,9 @@ const CreateExercise = () => {
             id='durationInput'
           />
         </div>
-        <div className={styles.formGroup}>
+        <div className='formGroup'>
           <label htmlFor='dateInput'>Date: </label>
-          <div className={`${styles.dateInput} ${styles.input}`}>
+          <div className='dateInput input'>
             <DatePicker
               selected={date}
               onChange={onChangeDate}
@@ -98,7 +98,7 @@ const CreateExercise = () => {
           </div>
         </div>
 
-        <div className={styles.formBtnGroup}>
+        <div className='formBtnGroup'>
           <button className='btn' type='submit'>
             Create Exercise Log
           </button>
