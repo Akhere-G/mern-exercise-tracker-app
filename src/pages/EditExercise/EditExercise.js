@@ -17,16 +17,19 @@ const EditExercise = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    setLoading(true);
-    const data = actions.getExercise(id);
-    setExerciseData({ ...data, date: new Date(data.date) });
+    const fetchExercises = async () => {
+      setLoading(true);
+      const data = await actions.getExercise(id);
+      setExerciseData({ ...data, date: new Date(data.date) });
 
-    const users = actions.getUsers();
-    if (users && users > 0) {
-      setUsers(users.map(user => user.username));
-    }
+      const users = await actions.getUsers();
+      if (users && users > 0) {
+        setUsers(users.map(user => user.username));
+      }
+      setLoading(false);
+    };
 
-    setLoading(false);
+    fetchExercises();
   }, [id]);
 
   const onChangeUsername = e => {
@@ -43,10 +46,10 @@ const EditExercise = () => {
     setExerciseData(prev => ({ ...prev, date }));
   };
 
-  const onSubmit = e => {
+  const onSubmit = async e => {
     e.preventDefault();
     const exercise = { ...exerciseData };
-    actions.updateExercise(id, exercise);
+    await actions.updateExercise(id, exercise);
     window.location = "/";
   };
 

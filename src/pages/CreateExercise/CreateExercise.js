@@ -26,23 +26,26 @@ const CreateExercise = () => {
     setExerciseData(prev => ({ ...prev, date }));
   };
 
-  const onSubmit = e => {
+  const onSubmit = async e => {
     e.preventDefault();
 
     const exercise = { ...exerciseData };
-    actions.addExercise(exercise);
+    await actions.addExercise(exercise);
     window.location = "/";
   };
 
   useEffect(() => {
-    const users = actions.getUsers();
-    if (users && users.length > 0) {
-      setUsers(users.map(user => user.username));
-      setExerciseData(prev => ({
-        ...prev,
-        username: users[0].username,
-      }));
-    }
+    const fetchData = async () => {
+      const users = await actions.getUsers();
+      if (users && users.length > 0) {
+        setUsers(users.map(user => user.username));
+        setExerciseData(prev => ({
+          ...prev,
+          username: users[0].username,
+        }));
+      }
+    };
+    fetchData();
   }, []);
 
   const formProps = {

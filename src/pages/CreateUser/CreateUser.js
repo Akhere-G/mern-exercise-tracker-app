@@ -8,11 +8,11 @@ const CreateUser = () => {
     setUsername(e.target.value);
   };
 
-  const onSubmit = e => {
+  const onSubmit = async e => {
     e.preventDefault();
     const user = { username };
 
-    actions.addUser(user);
+    await actions.addUser(user);
     window.location = "/";
   };
 

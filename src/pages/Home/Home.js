@@ -5,15 +5,18 @@ const Home = () => {
   const [exercises, setExercises] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const deleteExercise = id => {
-    actions.deleteExercise(id);
+  const deleteExercise = async id => {
+    await actions.deleteExercise(id);
     setExercises(prev => prev.filter(ExerciseId => ExerciseId._id !== id));
   };
 
   useEffect(() => {
-    setLoading(true);
-    setExercises(actions.getExercises());
-    setLoading(false);
+    const fetchExercises = async () => {
+      setLoading(true);
+      setExercises(await actions.getExercises());
+      setLoading(false);
+    };
+    fetchExercises();
   }, []);
 
   if (!exercises || loading) {
