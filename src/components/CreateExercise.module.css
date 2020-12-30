@@ -1,3 +1,14 @@
+.createExercise > h2 {
+  margin-bottom: 1em;
+  color: var(--secondary);
+}
+
+.form {
+  background-color: var(--secondary);
+  border-radius: 1em;
+  padding: 1em;
+}
+
 .formGroup {
   display: flex;
   align-items: baseline;

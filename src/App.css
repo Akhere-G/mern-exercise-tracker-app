@@ -4,7 +4,7 @@
   --primary-dark: #110033;
   --secondary: #f8f8f8;
   --secondary-light: #fff;
-  --secondary-dark: #eee;
+  --secondary-dark: #ddd;
   --success: #48f;
   --danger: #f44;
   --focus: #ff8;
@@ -85,7 +85,7 @@ input,
 select {
   border-radius: 999px;
   border: none;
-  background: var(--secondary);
+  background: var(--secondary-dark);
   padding: 0.5em;
   margin: 1em auto;
   display: inline;
