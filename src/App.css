@@ -106,3 +106,15 @@ select {
   transition: var(--transistion);
   background-color: var(--primary-light);
 }
+
+.section > h2 {
+  margin-bottom: 1em;
+  color: var(--secondary);
+}
+
+.form {
+  background-color: var(--secondary);
+  border-radius: 1em;
+  padding: 1em;
+  box-shadow: 0.5em 0.5em 0.8em #0008;
+}

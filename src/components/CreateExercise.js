@@ -46,9 +46,9 @@ const CreateExercise = () => {
   }, [url]);
 
   return (
-    <section className={styles.createExercise}>
+    <section className='section'>
       <h2>Create New Exercise Log</h2>
-      <form className={styles.form} onSubmit={onSubmit}>
+      <form className='form' onSubmit={onSubmit}>
         <div className={styles.formGroup}>
           <label htmlFor='usernameInput'>Username: </label>
           <select

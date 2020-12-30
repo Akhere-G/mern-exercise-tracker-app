@@ -21,9 +21,9 @@ const CreateUser = () => {
   };
 
   return (
-    <div>
-      <h3>Create New User</h3>
-      <form onSubmit={onSubmit}>
+    <div className='section'>
+      <h2>Create New User</h2>
+      <form className='form' onSubmit={onSubmit}>
         <div className={styles.formGroup}>
           <label>Username: </label>
           <input

@@ -21,7 +21,7 @@ const Exercise = ({
       </header>
       <div className={styles.body}>
         <h4 className={styles.desc}> {description} </h4>
-        <h5> Duration: {duration} </h5>
+        <h5> {`Duration: ${duration} mins`} </h5>
         <footer className={styles.footer}>
           <button className={styles.editBtn}>
             <Link

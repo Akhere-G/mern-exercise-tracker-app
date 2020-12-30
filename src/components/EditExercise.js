@@ -4,31 +4,46 @@ import axios from "axios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 const EditExercise = () => {
-  const [username, setUsername] = useState("");
-  const [description, setDescription] = useState("");
-  const [duration, setDuration] = useState(0);
-  const [date, setDate] = useState(new Date());
+  const [loading, setLoading] = useState(false);
+  const [exerciseData, setExerciseData] = useState({
+    username: "",
+    description: "",
+    duration: 0,
+    date: null,
+  });
+
   const [users, setUsers] = useState([]);
   const { id } = useParams();
 
   const url = process.env.REACT_APP_URL;
 
+  useEffect(() => {
+    setLoading(true);
+    axios
+      .get(`${url}/exercises/${id}`)
+      .then(res => {
+        setExerciseData({ ...res.data, date: new Date(res.data.date) });
+      })
+      .catch(err => console.log(err));
+    setLoading(false);
+  }, [url, id]);
+
   const onChangeUsername = e => {
-    setUsername(e.target.value);
+    setExerciseData(prev => ({ ...prev, username: e.target.value }));
   };
   const onChangeDescription = e => {
-    setDescription(e.target.value);
+    setExerciseData(prev => ({ ...prev, description: e.target.value }));
   };
 
   const onChangeDuration = e => {
-    setDuration(e.target.value);
+    setExerciseData(prev => ({ ...prev, duration: e.target.value }));
   };
   const onChangeDate = date => {
-    setDate(date);
+    setExerciseData(prev => ({ ...prev, date }));
   };
   const onSubmit = e => {
     e.preventDefault();
-    const exercise = { username, description, duration, date, users };
+    const exercise = { ...exerciseData };
 
     axios
       .post(`${url}/exercises/update/` + id, exercise)
@@ -38,34 +53,35 @@ const EditExercise = () => {
   };
 
   useEffect(() => {
+    axios.get(`${url}/users/`).then(res => {
+      if (res.data && res.data.length > 0) {
+        setUsers(res.data.map(user => user.username));
+      }
+    });
+
     axios
       .post(`${url}/exercises/` + id)
       .then(res => {
-        setUsername(res.data.username);
-        setDescription(res.data.Description);
-        setDuration(res.data.Duration);
-        setDate(new Date(res.data.Date));
+        setExerciseData({
+          username: res.data.username,
+          description: res.data.description,
+          duration: res.data.duration,
+          date: new Date(),
+        });
       })
       .catch(err => console.log(err));
-
-    axios.get(`${url}/users/`).then(response => {
-      if (response.data && response.data.length > 0) {
-        setUsers(response.data.map(user => user.username));
-        setUsername(response.data[0].username);
-      }
-    });
   }, [id, url]);
 
   return (
-    <div>
-      <h3>Edit Exercise Log</h3>
-      <form onSubmit={onSubmit}>
+    <div className='section'>
+      <h2>Edit Exercise Log</h2>
+      <form className='form' onSubmit={onSubmit}>
         <div className='form-group'>
           <label htmlFor=''>Username: </label>
           <select
             required
             className='form-control'
-            value={username}
+            value={exerciseData.username}
             onChange={onChangeUsername}
           >
             {users.map(user => {
@@ -83,7 +99,7 @@ const EditExercise = () => {
             type='text'
             required
             className='form-control'
-            value={description}
+            value={exerciseData.description}
             onChange={onChangeDescription}
           />
         </div>
@@ -93,14 +109,14 @@ const EditExercise = () => {
             type='text'
             required
             className='form-control'
-            value={duration}
+            value={exerciseData.duration}
             onChange={onChangeDuration}
           />
         </div>
         <div className='form-group'>
           <label>Date: </label>
           <div>
-            <DatePicker selected={date} onChange={onChangeDate} />
+            <DatePicker selected={exerciseData.date} onChange={onChangeDate} />
           </div>
         </div>
 
