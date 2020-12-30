@@ -1,7 +1,8 @@
-let Exercise = require("../models/exercise.model");
+const Exercise = require("../models/exercise.model");
 
 module.exports.getExercises = (req, res) => {
   Exercise.find()
+    .sort({ date: -1 })
     .then(exercises => res.json(exercises))
     .catch(err => res.status(400).json("Error: " + err));
 };
@@ -45,6 +46,7 @@ module.exports.addExercise = (req, res) => {
   const date = Date(req.body.date);
 
   const newExercise = new Exercise({ username, description, duration, date });
+  console.log(newExercise);
 
   newExercise
     .save()

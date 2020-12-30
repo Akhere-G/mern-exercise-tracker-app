@@ -8,7 +8,6 @@ const CreateExercise = () => {
   const [username, setUsername] = useState("");
   const [description, setDescription] = useState("");
   const [duration, setDuration] = useState(0);
-  const [date, setDate] = useState(new Date());
   const [users, setUsers] = useState([]);
 
   const onChangeUsername = e => {
@@ -21,12 +20,16 @@ const CreateExercise = () => {
   const onChangeDuration = e => {
     setDuration(e.target.value);
   };
-  const onChangeDate = date => {
-    setDate(date);
-  };
+
   const onSubmit = e => {
     e.preventDefault();
-    const exercise = { username, description, duration, date, users };
+    const exercise = {
+      username,
+      description,
+      duration,
+      date: new Date(),
+      users,
+    };
 
     axios
       .post(`${url}/exercises/add/`, exercise)
@@ -86,20 +89,10 @@ const CreateExercise = () => {
             id='durationInput'
           />
         </div>
-        <div className='formGroup'>
-          <label htmlFor='dateInput'>Date: </label>
-          <div className='dateInput input'>
-            <DatePicker
-              selected={date}
-              onChange={onChangeDate}
-              id='dateInput'
-            />
-          </div>
-        </div>
 
         <div className='formBtnGroup'>
           <button className='btn' type='submit'>
-            Create Exercise Log
+            Create Exercise
           </button>
         </div>
       </form>

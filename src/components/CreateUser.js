@@ -37,7 +37,7 @@ const CreateUser = () => {
 
         <div className={styles.formBtnGroup}>
           <button type='submit' className='btn'>
-            Create Exercise Log
+            Create User
           </button>
         </div>
       </form>

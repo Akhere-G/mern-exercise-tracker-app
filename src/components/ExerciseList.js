@@ -21,9 +21,11 @@ const ExerciseList = () => {
 
   useEffect(() => {
     setLoading(true);
+    console.log("my website", url);
     axios
-      .get(`${url}/exercises/`)
+      .get(` ${url}/exercises`)
       .then(response => {
+        console.log(response);
         setExercises(response.data);
       })
       .catch(err => console.log(err));
@@ -33,8 +35,8 @@ const ExerciseList = () => {
   if (!exercises || loading) {
     return (
       <div>
-        <h3>Logged Exercises</h3>
-        <h3>Loading...</h3>
+        <h2 className={styles.title}>Logged Exercises</h2>
+        <h2 className={styles.title}>Loading...</h2>
       </div>
     );
   }
@@ -42,8 +44,8 @@ const ExerciseList = () => {
   if (exercises.length < 1) {
     return (
       <div>
-        <h3>Logged Exercises</h3>
-        <h3>No Exercises</h3>
+        <h2 className={styles.title}>Logged Exercises</h2>
+        <h3 className={styles.title}>No Exercises</h3>
       </div>
     );
   }
