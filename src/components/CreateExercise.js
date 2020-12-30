@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import styles from "./CreateExercise.module.css";
 import axios from "axios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";

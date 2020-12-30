@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import styles from "./CreateExercise.module.css";
 
 const EditExercise = () => {
   const [loading, setLoading] = useState(false);
@@ -27,6 +26,13 @@ const EditExercise = () => {
         setExerciseData({ ...res.data, date: new Date(res.data.date) });
       })
       .catch(err => console.log(err));
+
+    axios.get(`${url}/users/`).then(res => {
+      if (res.data && res.data.length > 0) {
+        setUsers(res.data.map(user => user.username));
+      }
+    });
+
     setLoading(false);
   }, [url, id]);
 
@@ -43,6 +49,7 @@ const EditExercise = () => {
   const onChangeDate = date => {
     setExerciseData(prev => ({ ...prev, date }));
   };
+
   const onSubmit = e => {
     e.preventDefault();
     const exercise = { ...exerciseData };
@@ -53,26 +60,6 @@ const EditExercise = () => {
       .catch(err => console.log(err));
     window.location = "/";
   };
-
-  useEffect(() => {
-    axios.get(`${url}/users/`).then(res => {
-      if (res.data && res.data.length > 0) {
-        setUsers(res.data.map(user => user.username));
-      }
-    });
-
-    axios
-      .post(`${url}/exercises/` + id)
-      .then(res => {
-        setExerciseData({
-          username: res.data.username,
-          description: res.data.description,
-          duration: res.data.duration,
-          date: new Date(),
-        });
-      })
-      .catch(err => console.log(err));
-  }, [id, url]);
 
   return (
     <section className='section'>

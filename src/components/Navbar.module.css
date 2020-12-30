@@ -108,4 +108,8 @@
 
     transition: var(--transistion);
   }
+
+  .activeLink a {
+    color: var(--primary-light);
+  }
 }

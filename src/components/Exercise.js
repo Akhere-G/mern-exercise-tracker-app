@@ -24,14 +24,7 @@ const Exercise = ({
         <h5> {`Duration: ${duration} mins`} </h5>
         <footer className={styles.footer}>
           <button className={styles.editBtn}>
-            <Link
-              to={`/edit/${id}`}
-              onClick={() => {
-                console.log(`/edit/${id}`);
-              }}
-            >
-              Edit
-            </Link>
+            <Link to={`/edit/${id}`}>Edit</Link>
           </button>
 
           <button
