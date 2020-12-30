@@ -13,6 +13,10 @@
   max-width: var(--max-width);
 }
 
+.logo {
+  font-size: 2rem;
+}
+
 .navbarLinks {
   position: absolute;
   top: -10em;

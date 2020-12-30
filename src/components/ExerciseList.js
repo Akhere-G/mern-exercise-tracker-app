@@ -50,7 +50,7 @@ const ExerciseList = () => {
 
   return (
     <>
-      <h3 className={styles.title}>Logged Exercises</h3>
+      <h2 className={styles.title}>Logged Exercises</h2>
       <ul>
         {exercises.map(exercise => {
           const { _id } = exercise;

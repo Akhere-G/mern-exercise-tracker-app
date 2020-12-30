@@ -15,34 +15,38 @@ const Exercise = ({
   const regexp = /-/g;
   return (
     <li className={`${styles.exercise} ${show ? styles.deleted : ""} `}>
-      <p> {username} </p>
-      <p> {description} </p>
-      <p> {duration} </p>
-      <p> {date.substring(0, 10).replace(regexp, " ")} </p>
-      <p>
-        <button className={styles.editBtn}>
-          <Link
-            to={`/edit/${id}`}
+      <header className={styles.header}>
+        <h2> {username} </h2>
+        <p> {date.substring(0, 10).replace(regexp, " ")} </p>
+      </header>
+      <div className={styles.body}>
+        <h4 className={styles.desc}> {description} </h4>
+        <h5> Duration: {duration} </h5>
+        <footer className={styles.footer}>
+          <button className={styles.editBtn}>
+            <Link
+              to={`/edit/${id}`}
+              onClick={() => {
+                console.log(`/edit/${id}`);
+              }}
+            >
+              Edit
+            </Link>
+          </button>
+
+          <button
+            className={styles.deleteBtn}
             onClick={() => {
-              console.log(`/edit/${id}`);
+              setShow(true);
+              setTimeout(() => {
+                deleteExercise(id);
+              }, 350);
             }}
           >
-            Edit
-          </Link>
-        </button>
-
-        <button
-          className={styles.deleteBtn}
-          onClick={() => {
-            setShow(true);
-            setTimeout(() => {
-              deleteExercise(id);
-            }, 350);
-          }}
-        >
-          Delete
-        </button>
-      </p>
+            Delete
+          </button>
+        </footer>
+      </div>
     </li>
   );
 };
