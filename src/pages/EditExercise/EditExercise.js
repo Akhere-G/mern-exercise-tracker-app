@@ -4,7 +4,7 @@ import axios from "axios";
 import { Form } from "../../components";
 
 const EditExercise = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [exerciseData, setExerciseData] = useState({
     username: "",
     description: "",
@@ -59,6 +59,15 @@ const EditExercise = () => {
       .catch(err => console.log(err));
     window.location = "/";
   };
+
+  if (loading) {
+    return (
+      <section className='section'>
+        <h2 className='title'>Logged Exercises</h2>
+        <h2 className='title'>Loading...</h2>
+      </section>
+    );
+  }
 
   const formProps = {
     exerciseData,

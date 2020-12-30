@@ -34,8 +34,8 @@ connection.once("open", () => {
 const exercisesRouter = require("./routes/exercisesRouter");
 const usersRouter = require("./routes/usersRouter");
 
-app.use("/exercises", exercisesRouter);
-app.use("/users", usersRouter);
+app.use("/exercises", cors(), exercisesRouter);
+app.use("/users", cors(), usersRouter);
 
 app.get("/", (req, res) => {
   res.send("Welcome to the Excercise Tracker API");

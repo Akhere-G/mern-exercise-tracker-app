@@ -19,11 +19,9 @@ const Home = () => {
 
   useEffect(() => {
     setLoading(true);
-    console.log("my website", url);
     axios
       .get(` ${url}/exercises`)
       .then(response => {
-        console.log(response);
         setExercises(response.data);
       })
       .catch(err => console.log(err));
