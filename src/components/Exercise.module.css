@@ -1,12 +1,15 @@
 .exercise {
   transition: var(--transistion);
-
+  background-color: var(--secondary);
   transform: rotate3d(0, 0, 0, 90deg);
+  padding: 1em;
+  margin-bottom: 1em;
+  border-radius: 1em;
+  box-shadow: 0.5em 0.5em 0.8em #0008;
 }
 
 .deleted {
   transition: var(--transistion);
-
   transform: rotate3d(0, 1, 0, 90deg);
 }
 
@@ -26,12 +29,12 @@
 }
 
 .editBtn a {
-  color: var(--primary-text);
+  color: var(--success);
   transition: var(--transistion);
 }
 
 .deleteBtn {
-  color: var(--danger-text);
+  color: var(--danger);
   padding: 0;
   transition: var(--transistion);
 }

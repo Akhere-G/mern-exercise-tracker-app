@@ -51,30 +51,19 @@ const ExerciseList = () => {
   return (
     <>
       <h3 className={styles.title}>Logged Exercises</h3>
-      <table className={styles.table}>
-        <thead>
-          <tr>
-            <th>username</th>
-            <th>desc</th>
-            <th>duration</th>
-            <th>date</th>
-            <th>options</th>
-          </tr>
-        </thead>
-        <tbody>
-          {exercises.map(exercise => {
-            const { _id } = exercise;
-            return (
-              <Exercise
-                key={_id}
-                id={_id}
-                {...exercise}
-                deleteExercise={deleteExercise}
-              />
-            );
-          })}
-        </tbody>
-      </table>
+      <ul>
+        {exercises.map(exercise => {
+          const { _id } = exercise;
+          return (
+            <Exercise
+              key={_id}
+              id={_id}
+              {...exercise}
+              deleteExercise={deleteExercise}
+            />
+          );
+        })}
+      </ul>
     </>
   );
 };

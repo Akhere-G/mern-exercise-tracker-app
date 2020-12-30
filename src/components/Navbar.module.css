@@ -1,5 +1,5 @@
 .container {
-  background-color: var(--primary-bg-1);
+  background-color: var(--secondary);
   z-index: 999;
 }
 .navbar {
@@ -25,7 +25,7 @@
   justify-items: flex-end;
   padding-top: 1em;
   padding-bottom: 1em;
-  background-color: var(--primary-bg-2);
+  background-color: var(--primary-dark);
   transition: var(--transistion);
   z-index: 998;
 }
@@ -46,18 +46,19 @@
   width: 100%;
   height: 100%;
   padding: 0.5em 0;
-
   display: block;
+  color: var(--secondary);
 }
+
 .navbarLink a:hover {
-  background-color: var(--primary-bg-1);
-  color: var(--focus-text);
+  background-color: var(--primary-light);
+  color: var(--focus);
 
   transition: var(--transistion);
 }
 
 .activeLink a {
-  color: var(--focus-text);
+  color: var(--focus);
 }
 
 .navbarBtn {
@@ -92,5 +93,15 @@
   .navbarLinks a {
     width: auto;
     height: auto;
+    padding: auto;
+    display: block;
+    color: var(--primary);
+  }
+
+  .navbarLink a:hover {
+    background-color: transparent;
+    color: var(--primary-light);
+
+    transition: var(--transistion);
   }
 }

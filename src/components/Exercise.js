@@ -14,12 +14,12 @@ const Exercise = ({
 
   const regexp = /-/g;
   return (
-    <tr className={`${styles.exercise} ${show ? styles.deleted : ""} `}>
-      <td> {username} </td>
-      <td> {description} </td>
-      <td> {duration} </td>
-      <td> {date.substring(0, 10).replace(regexp, " ")} </td>
-      <td>
+    <li className={`${styles.exercise} ${show ? styles.deleted : ""} `}>
+      <p> {username} </p>
+      <p> {description} </p>
+      <p> {duration} </p>
+      <p> {date.substring(0, 10).replace(regexp, " ")} </p>
+      <p>
         <button className={styles.editBtn}>
           <Link
             to={`/edit/${id}`}
@@ -42,8 +42,8 @@ const Exercise = ({
         >
           Delete
         </button>
-      </td>
-    </tr>
+      </p>
+    </li>
   );
 };
 
