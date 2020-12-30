@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+import * as actions from "../../actions";
+
 import { Form } from "../../components";
 
 const EditExercise = () => {
@@ -19,18 +20,13 @@ const EditExercise = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios
-      .get(`${url}/exercises/${id}`)
-      .then(res => {
-        setExerciseData({ ...res.data, date: new Date(res.data.date) });
-      })
-      .catch(err => console.log(err));
+    const data = actions.getExercise(id);
+    setExerciseData({ ...data, date: new Date(data.date) });
 
-    axios.get(`${url}/users/`).then(res => {
-      if (res.data && res.data.length > 0) {
-        setUsers(res.data.map(user => user.username));
-      }
-    });
+    const users = actions.getUsers();
+    if (users && users > 0) {
+      setUsers(users.map(user => user.username));
+    }
 
     setLoading(false);
   }, [url, id]);
@@ -52,11 +48,7 @@ const EditExercise = () => {
   const onSubmit = e => {
     e.preventDefault();
     const exercise = { ...exerciseData };
-
-    axios
-      .post(`${url}/exercises/update/` + id, exercise)
-      .then(res => {})
-      .catch(err => console.log(err));
+    actions.updateExercise(id, exercise);
     window.location = "/";
   };
 

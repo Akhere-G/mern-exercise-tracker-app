@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { Exercises } from "../../components/";
-
+import * as actions from "../../actions";
 const Home = () => {
   const [exercises, setExercises] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -9,22 +8,13 @@ const Home = () => {
   const url = process.env.REACT_APP_URL;
 
   const deleteExercise = id => {
-    axios
-      .delete(`${url}/exercises/` + id)
-      .then(res => {
-        setExercises(prev => prev.filter(ExerciseId => ExerciseId._id !== id));
-      })
-      .catch(err => console.log(err));
+    actions.deleteExercise(id);
+    setExercises(prev => prev.filter(ExerciseId => ExerciseId._id !== id));
   };
 
   useEffect(() => {
     setLoading(true);
-    axios
-      .get(` ${url}/exercises`)
-      .then(response => {
-        setExercises(response.data);
-      })
-      .catch(err => console.log(err));
+    setExercises(actions.getExercises());
     setLoading(false);
   }, [url]);
 

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import axios from "axios";
+import * as actions from "../../actions";
+
 const CreateUser = () => {
   const [username, setUsername] = useState("");
   const url = process.env.REACT_APP_URL;
@@ -12,10 +13,7 @@ const CreateUser = () => {
     e.preventDefault();
     const user = { username };
 
-    axios
-      .post(`${url}/users/add`, user)
-      .then(res => {})
-      .catch(e => console.log(e));
+    actions.addUser(user);
     window.location = "/";
   };
 
