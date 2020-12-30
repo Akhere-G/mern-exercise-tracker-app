@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Exercise from "./Exercise";
-import styles from "./ExerciseList.module.css";
+import { Exercises } from "../../components/";
 
-const ExerciseList = () => {
+const Home = () => {
   const [exercises, setExercises] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -13,7 +12,6 @@ const ExerciseList = () => {
     axios
       .delete(`${url}/exercises/` + id)
       .then(res => {
-        console.log(res);
         setExercises(prev => prev.filter(ExerciseId => ExerciseId._id !== id));
       })
       .catch(err => console.log(err));
@@ -34,40 +32,28 @@ const ExerciseList = () => {
 
   if (!exercises || loading) {
     return (
-      <div>
-        <h2 className={styles.title}>Logged Exercises</h2>
-        <h2 className={styles.title}>Loading...</h2>
-      </div>
+      <section className='section'>
+        <h2 className='title'>Logged Exercises</h2>
+        <h2 className='title'>Loading...</h2>
+      </section>
     );
   }
 
   if (exercises.length < 1) {
     return (
-      <div>
-        <h2 className={styles.title}>Logged Exercises</h2>
-        <h3 className={styles.title}>No Exercises</h3>
-      </div>
+      <section className='section'>
+        <h2 className='title'>Logged Exercises</h2>
+        <h3 className='title'>No Exercises</h3>
+      </section>
     );
   }
 
   return (
-    <>
-      <h2 className={styles.title}>Logged Exercises</h2>
-      <ul>
-        {exercises.map(exercise => {
-          const { _id } = exercise;
-          return (
-            <Exercise
-              key={_id}
-              id={_id}
-              {...exercise}
-              deleteExercise={deleteExercise}
-            />
-          );
-        })}
-      </ul>
-    </>
+    <section className='section'>
+      <h2 className='title'>Logged Exercises</h2>
+      <Exercises exercises={exercises} deleteExercise={deleteExercise} />
+    </section>
   );
 };
 
-export default ExerciseList;
+export default Home;

@@ -1,14 +1,9 @@
 import "./App.css";
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import {
-  Navbar,
-  ExerciseList,
-  EditExercise,
-  CreateExercise,
-  CreateUser,
-  Error,
-} from "./components";
+import { CreateExercise, CreateUser, EditExercise, Home, Error } from "./pages";
+
+import { Navbar } from "./components";
 function App() {
   return (
     <Router>
@@ -16,7 +11,7 @@ function App() {
         <Navbar className='mb-2' />
         <main className='mt-3'>
           <Switch>
-            <Route path='/' exact component={ExerciseList} />
+            <Route path='/' exact component={Home} />
             <Route path='/edit/:id' exact component={EditExercise} />
             <Route path='/create' exact component={CreateExercise} />
             <Route path='/user' exact component={CreateUser} />

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import styles from "./CreateUser.module.css";
 const CreateUser = () => {
   const [username, setUsername] = useState("");
   const url = process.env.REACT_APP_URL;
@@ -15,16 +14,16 @@ const CreateUser = () => {
 
     axios
       .post(`${url}/users/add`, user)
-      .then(res => console.log(res.data))
+      .then(res => {})
       .catch(e => console.log(e));
     window.location = "/";
   };
 
   return (
-    <div className='section'>
+    <section className='section'>
       <h2>Create New User</h2>
       <form className='form' onSubmit={onSubmit}>
-        <div className={styles.formGroup}>
+        <div className='formGroup'>
           <label>Username: </label>
           <input
             type='text'
@@ -35,13 +34,13 @@ const CreateUser = () => {
           />
         </div>
 
-        <div className={styles.formBtnGroup}>
+        <div className='formBtnGroup'>
           <button type='submit' className='btn'>
             Create User
           </button>
         </div>
       </form>
-    </div>
+    </section>
   );
 };
 

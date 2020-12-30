@@ -46,8 +46,6 @@ module.exports.addExercise = (req, res) => {
   const date = Date(req.body.date);
 
   const newExercise = new Exercise({ username, description, duration, date });
-  console.log(newExercise);
-
   newExercise
     .save()
     .then(() => res.json("Exercise added!"))

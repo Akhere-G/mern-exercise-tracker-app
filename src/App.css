@@ -147,3 +147,13 @@ select {
 .formGroup > select {
   border: none;
 }
+.Errorbtn {
+  background-color: var(--secondary);
+}
+.Errorbtn:hover {
+  background-color: var(--secondary-light);
+}
+
+.Errorbtn a {
+  color: var(--primary);
+}

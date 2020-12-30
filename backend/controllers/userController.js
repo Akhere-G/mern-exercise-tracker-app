@@ -7,7 +7,6 @@ module.exports.getUsers = (req, res) => {
 };
 
 module.exports.addUser = (req, res) => {
-  console.log("here");
   const username = req.body.username;
 
   const newUser = new User({ username });
