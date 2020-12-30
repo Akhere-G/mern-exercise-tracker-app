@@ -3,7 +3,6 @@ import * as actions from "../../actions";
 
 const CreateUser = () => {
   const [username, setUsername] = useState("");
-  const url = process.env.REACT_APP_URL;
 
   const onChangeUsername = e => {
     setUsername(e.target.value);

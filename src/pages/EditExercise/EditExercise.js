@@ -16,8 +16,6 @@ const EditExercise = () => {
   const [users, setUsers] = useState([]);
   const { id } = useParams();
 
-  const url = process.env.REACT_APP_URL;
-
   useEffect(() => {
     setLoading(true);
     const data = actions.getExercise(id);
@@ -29,7 +27,7 @@ const EditExercise = () => {
     }
 
     setLoading(false);
-  }, [url, id]);
+  }, [id]);
 
   const onChangeUsername = e => {
     setExerciseData(prev => ({ ...prev, username: e.target.value }));

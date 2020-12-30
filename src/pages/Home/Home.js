@@ -5,8 +5,6 @@ const Home = () => {
   const [exercises, setExercises] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const url = process.env.REACT_APP_URL;
-
   const deleteExercise = id => {
     actions.deleteExercise(id);
     setExercises(prev => prev.filter(ExerciseId => ExerciseId._id !== id));
@@ -16,7 +14,7 @@ const Home = () => {
     setLoading(true);
     setExercises(actions.getExercises());
     setLoading(false);
-  }, [url]);
+  }, []);
 
   if (!exercises || loading) {
     return (

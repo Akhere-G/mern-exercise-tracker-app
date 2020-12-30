@@ -4,7 +4,6 @@ import * as actions from "../../actions";
 import { Form } from "../../components";
 
 const CreateExercise = () => {
-  const url = process.env.REACT_APP_URL;
   const [users, setUsers] = useState([]);
   const [exerciseData, setExerciseData] = useState({
     username: "",
@@ -44,7 +43,7 @@ const CreateExercise = () => {
         username: users[0].username,
       }));
     }
-  }, [url]);
+  }, []);
 
   const formProps = {
     exerciseData,
