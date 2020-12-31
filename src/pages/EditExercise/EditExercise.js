@@ -57,8 +57,8 @@ const EditExercise = () => {
   if (loading) {
     return (
       <section className='section'>
-        <h2 className='title'>Logged Exercises</h2>
-        <h2 className='title'>Loading...</h2>
+        <h2 className='title'>Edit Exercise</h2>
+        <div className='loader'></div>
       </section>
     );
   }
