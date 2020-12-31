@@ -4,6 +4,7 @@ import * as actions from "../../actions";
 import { Form } from "../../components";
 
 const CreateExercise = () => {
+  const [loading, setLoading] = useState(true);
   const [users, setUsers] = useState([]);
   const [exerciseData, setExerciseData] = useState({
     username: "",
@@ -11,6 +12,23 @@ const CreateExercise = () => {
     duration: 0,
     date: null,
   });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+
+      const users = await actions.getUsers();
+      if (users && users.length > 0) {
+        setUsers(users.map(user => user.username));
+        setExerciseData(prev => ({
+          ...prev,
+          username: users[0].username,
+        }));
+      }
+      setLoading(false);
+    };
+    fetchData();
+  }, []);
 
   const onChangeUsername = e => {
     setExerciseData(prev => ({ ...prev, username: e.target.value }));
@@ -34,20 +52,14 @@ const CreateExercise = () => {
     window.location = "/";
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const users = await actions.getUsers();
-      if (users && users.length > 0) {
-        setUsers(users.map(user => user.username));
-        setExerciseData(prev => ({
-          ...prev,
-          username: users[0].username,
-        }));
-      }
-    };
-    fetchData();
-  }, []);
-
+  if (loading) {
+    return (
+      <section className='section'>
+        <h2 className='title'>Logged Exercises</h2>
+        <h2 className='title'>Loading...</h2>
+      </section>
+    );
+  }
   const formProps = {
     exerciseData,
     onChangeUsername,
@@ -61,7 +73,7 @@ const CreateExercise = () => {
 
   return (
     <section className='section'>
-      <h2>Create New Exercise Log</h2>
+      <h2>Create New Exercise</h2>
       <Form {...formProps} />
     </section>
   );

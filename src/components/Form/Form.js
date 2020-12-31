@@ -45,7 +45,7 @@ const Form = ({
       <div className='formGroup'>
         <label htmlFor='durationInput'>Duration: </label>
         <input
-          type='text'
+          type='number'
           required
           value={exerciseData.duration}
           onChange={onChangeDuration}

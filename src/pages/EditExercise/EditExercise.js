@@ -6,6 +6,7 @@ import { Form } from "../../components";
 
 const EditExercise = () => {
   const [loading, setLoading] = useState(true);
+  const [users, setUsers] = useState([]);
   const [exerciseData, setExerciseData] = useState({
     username: "",
     description: "",
@@ -13,7 +14,6 @@ const EditExercise = () => {
     date: null,
   });
 
-  const [users, setUsers] = useState([]);
   const { id } = useParams();
 
   useEffect(() => {
@@ -23,7 +23,8 @@ const EditExercise = () => {
       setExerciseData({ ...data, date: new Date(data.date) });
 
       const users = await actions.getUsers();
-      if (users && users > 0) {
+      console.log("users=", users);
+      if (users && users.length > 0) {
         setUsers(users.map(user => user.username));
       }
       setLoading(false);
@@ -74,7 +75,7 @@ const EditExercise = () => {
   };
   return (
     <section className='section'>
-      <h2>Edit Exercise Log</h2>
+      <h2>Edit Exercise</h2>
       <Form {...formProps} />
     </section>
   );
