@@ -8,6 +8,8 @@
   --success: #48f;
   --danger: #f44;
   --focus: #ff8;
+  --focus-dark: #dc0;
+
   --max-width: 800px;
   --transistion: all linear 300ms;
 }

@@ -104,12 +104,12 @@
 
   .navbarLink a:hover {
     background-color: transparent;
-    color: var(--primary-light);
+    color: var(--focus-dark);
 
     transition: var(--transistion);
   }
 
   .activeLink a {
-    color: var(--primary-light);
+    color: var(--focus-dark);
   }
 }
